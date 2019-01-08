@@ -27,7 +27,8 @@ public class Main {
         todoListController.DeleteTodoList("exo-k");
         break;
       case SHOW:
-        todoListController.ShowList("bts");
+        ArrayList<String> taskList = (ArrayList<String>) todoListController.ReadListFromFile("bts");
+        todoListController.ShowList(taskList);
         break;
       case EDIT:
         todoListController.EditTodoList("bts");
