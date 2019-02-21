@@ -1,40 +1,22 @@
 package com.todoList;
 
+import com.todoList.TodoListController.TodoListController;
+
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-
-  public enum Commands {CREATE, DELETE, SHOW, SHOWALL, EDIT}
-
-  public static void main (String[] args) throws IOException {
-
-    String commandName = args[0];
-    Commands command = Commands.valueOf(commandName.toUpperCase());
-
+  public static void main(String[] args) throws IOException {
     TodoListController todoListController = new TodoListController();
-    switch(command){
-      case SHOWALL:
-        todoListController.ShowAll();
-        break;
-      case CREATE:
-        todoListController.CreateNewTodoList("bts");
-        break;
-      case DELETE:
-        todoListController.DeleteTodoList("exo-k");
-        break;
-      case SHOW:
-        ArrayList<String> taskList = (ArrayList<String>) todoListController.ReadListFromFile("bts");
-        todoListController.ShowList(taskList);
-        break;
-      case EDIT:
-        todoListController.EditTodoList("bts");
-        break;
-      default:
-        System.out.println("error command");
+    todoListController.userManual();
+    todoListController.loadAllTodoLists();
+
+    Scanner inputStream = new Scanner(System.in);
+    String commandString;
+
+    while (!(commandString = inputStream.nextLine()).equals("exit")){
+      todoListController.processUserCommand(commandString);
     }
+    todoListController.saveResult();
   }
 }
