@@ -12,15 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileController {
+  private static final String DIRECTORY = "todoListCatalog";
+  private static final String FILE_PATH = DIRECTORY + "\\todoLists.json";
   public static final String LIST_NAME = "listName";
   public static final String TASK_ARRAY = "tasks";
   public static final String TASK_TEXT = "task";
   public static final String STATUS = "status";
 
-  public List<TaskList> loadListOfTaskLists(String filePath) throws IOException {
+  public List<TaskList> loadListOfTaskLists() throws IOException {
     List<TaskList> listOfTaskLists = new ArrayList<>();
     try {
-      listOfTaskLists = readListOfTaskList(readStringsFromFile(filePath));
+      listOfTaskLists = readListOfTaskList(readStringsFromFile());
     }
     catch (IOException ex){
       ConsoleWriter.printMessage(Messages.fileReadingError);
@@ -28,9 +30,9 @@ public class FileController {
     return listOfTaskLists;
   }
 
-  public List<String> readStringsFromFile(String listPath) throws IOException {
+  public List<String> readStringsFromFile() throws IOException {
     List<String> stringsOfTaskLists = new ArrayList<>();
-    File file = new File(listPath);
+    File file = new File(FILE_PATH);
     if (file.exists()){
       BufferedReader reader = new BufferedReader(new FileReader(file));
       while (reader.ready()){
@@ -96,9 +98,17 @@ public class FileController {
     return taskArray;
   }
 
-  public static boolean saveToFile(List<TaskList> listOfTaskLists, String filePath) throws IOException {
+  public static void checkDirectoryExist(){
+    File directory = new File(DIRECTORY);
+    if (!directory.exists()){
+      directory.mkdir();
+    }
+  }
+
+  public static boolean saveToFile(List<TaskList> listOfTaskLists) throws IOException {
     List<String> todoList = performTaskListsToJson(listOfTaskLists);
-    FileWriter writer = new FileWriter(filePath, false);
+    checkDirectoryExist();
+    FileWriter writer = new FileWriter(FILE_PATH, false);
     for(String list : todoList) {
       writer.write(list+",");
       writer.write("\r\n");
@@ -108,37 +118,3 @@ public class FileController {
     return true;
   }
 }
-
-
-
-/*
-  public List<TaskList> loadTodoLists(String listPath) throws IOException {
-    List<TaskList> listOfTaskLists = new ArrayList<>();
-    File file = new File(listPath);
-    if (file.exists()) {
-      BufferedReader reader = new BufferedReader(new FileReader(file));
-      while (reader.ready()) {
-        String jsonTaskListString = reader.readLine();
-
-        JSONObject jsonTaskListObject = new JSONObject(jsonTaskListString);
-        JSONArray tasksArray = jsonTaskListObject.getJSONArray(TASK_ARRAY);
-
-        TaskList taskList = new TaskList();
-        List<Task> tasksOfList = new ArrayList<>();
-        taskList.setListName(jsonTaskListObject.get(LIST_NAME).toString());
-
-        for (int i = 0; i < tasksArray.length(); i++) {
-          JSONObject taskObject = tasksArray.getJSONObject(i);
-          Task task = new Task();
-          task.setTaskText(taskObject.get(TASK_TEXT).toString());
-          task.setStatus(taskObject.get(STATUS).toString());
-          tasksOfList.add(task);
-        }
-        taskList.setTaskList(tasksOfList);
-        listOfTaskLists.add(taskList);
-      }
-      reader.close();
-    }
-    return listOfTaskLists;
-  }
-  */

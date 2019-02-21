@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TodoListController {
-  private static final String FILE_PATH = "todoListCatalog\\todoLists.json";
   private List<TaskList> listOfTaskLists;
   private CorrectParams correctParams;
 
@@ -39,14 +38,14 @@ public class TodoListController {
 
   public void loadAllTodoLists() throws IOException {
     FileController fileController = new FileController();
-    listOfTaskLists = fileController.loadListOfTaskLists(FILE_PATH);
+    listOfTaskLists = fileController.loadListOfTaskLists();
   }
 
   public void saveResult() throws IOException {
     try{
-    if (!listOfTaskLists.isEmpty()) {
-      FileController.saveToFile(listOfTaskLists, FILE_PATH);
-    }
+    //if (!listOfTaskLists.isEmpty()) {
+      FileController.saveToFile(listOfTaskLists);
+    //}
     ConsoleWriter.printMessage(Messages.resultSaved);
     }
     catch (IOException ex){
