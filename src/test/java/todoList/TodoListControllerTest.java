@@ -1,4 +1,4 @@
-package CourseProject;
+package todoList;
 
 import com.todoList.TodoListController.TodoListController;
 import org.junit.Assert;

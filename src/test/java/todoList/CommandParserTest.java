@@ -1,4 +1,4 @@
-package CourseProject;
+package todoList;
 
 import com.todoList.Command.Command;
 import com.todoList.Entities.TaskList;
