@@ -164,5 +164,4 @@ public class TodoListTest {
     Assert.assertEquals(todoListController.getListOfTaskLists().get(0).getListName(), "first");
     Assert.assertEquals(todoListController.getListOfTaskLists().get(1).getTaskList().size(), 0);
   }
-
 }
