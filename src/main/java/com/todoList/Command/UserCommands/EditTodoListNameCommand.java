@@ -8,7 +8,7 @@ import com.todoList.Utils.Messages;
 
 import java.util.List;
 
-public class EditTaskNameCommand extends Command {
+public class EditTodoListNameCommand extends Command {
   public boolean perform(List<TaskList> listOfTaskLists) {
     String listName = commandParts.get(0);
     String newListName = commandParts.get(1);

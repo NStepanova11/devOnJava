@@ -97,12 +97,27 @@ public class TodoListTest {
 
   @Test
   public void parseCommandShow(){
-    runBadCommand("show -secondList");
+    runCommand("create -list");
+    runCommand("add -list -first task");
+    runCommand("add -list -second task");
+    runCommand("show -list");
   }
 
   @Test (expected = IllegalArgumentException.class)
-  public void parseBadCommandShow(){
+  public void parseBadCommandShow2(){
     runCommand("show secondList");
+  }
+
+  @Test
+  public void editTaskListNameTest(){
+    runCommand("create -listName");
+    runCommand("edit list name -listName -updatedName");
+  }
+
+  @Test
+  public void deleteListCommandTest(){
+    runCommand("create -listName");
+    runCommand("delete -listName");
   }
 
   private void runCommand(String commandString){
@@ -123,6 +138,20 @@ public class TodoListTest {
   public void saveResultTest() throws IOException {
     TodoListController todoListController = new TodoListController();
     Assert.assertTrue(todoListController.processUserCommand("create -listName"));
+  }
+
+  @Test
+  public void userManualTest(){
+    TodoListController t = new TodoListController();
+    Assert.assertTrue(t.userManual());
+  }
+
+  @Test
+  public void CommandTypeTest(){
+    CommandParser c = new CommandParser();
+    CorrectParams correctParams = new CorrectParams();
+    Command command = c.parseUserCommand("show all", correctParams);
+    Assert.assertEquals(command.getCommandType(), "show all");
   }
 
   @Test

@@ -35,7 +35,7 @@ public class CommandList {
     commandTypes.put(ADD, new AddCommand());
     commandTypes.put(EDIT_TASK, new EditTaskCommand());
     commandTypes.put(SET_STATUS, new EditTaskStatusCommand());
-    commandTypes.put(EDIT_LIST_NAME, new EditTaskNameCommand());
+    commandTypes.put(EDIT_LIST_NAME, new EditTodoListNameCommand());
     return commandTypes;
   }
 
