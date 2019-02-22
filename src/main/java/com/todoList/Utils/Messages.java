@@ -18,5 +18,8 @@ public class Messages {
   public static final String listIsCreated = " Todo-list created";
   public static final String listIsExist = " sheet already exists";
   public static final String incorrectTaskNumber = "No task with number ";
-  public static final String resultSaved = " Result saved";
+  //public static final String resultSaved = " Result saved";
+  public static final String taskUpdated = " Task updated";
+  public static final String taskStatusUpdated = " Status updated";
+  public static final String listNameUpdated = " List name updated";
 }

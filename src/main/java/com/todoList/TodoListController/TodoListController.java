@@ -30,6 +30,7 @@ public class TodoListController {
       CommandParser commandParser = new CommandParser();
       Command command = commandParser.parseUserCommand(userCommandString, correctParams);
       command.perform(listOfTaskLists);
+      saveResult();
     }
     catch (Exception ex){
       System.out.println(ex.getMessage());
@@ -44,7 +45,7 @@ public class TodoListController {
   public boolean saveResult() throws IOException {
     try{
       FileController.saveToFile(listOfTaskLists);
-      ConsoleWriter.printMessage(Messages.resultSaved);
+      //ConsoleWriter.printMessage(Messages.resultSaved);
     }
     catch (IOException ex){
       ConsoleWriter.printMessage(Messages.fileWritingError);
@@ -54,13 +55,15 @@ public class TodoListController {
   }
 
   public boolean userManual(){
-    System.out.println("Создать todo-лист: create -listName");
-    System.out.println("Удалить todo-лист: delete -listName");
-    System.out.println("Показать список всех листов: showall");
-    System.out.println("Показать todo-лист: show -listName");
-    System.out.println("Добавить задачу в todo-лист: add -listName -taskText");
-    System.out.println("Изменить текст задачи: edit -listName -taskNumber -newTaskText");
-    System.out.println("Изменить статус задачи: setstatus -listName -taskNumber -newStatus[done, cancelled]");
+    System.out.println("Create todo-list: create -listName");
+    System.out.println("Delete todo-list: delete -listName");
+    System.out.println("Show list of all sheets: show all");
+    System.out.println("Show todo-list: show -listName");
+    System.out.println("Append task to todo-list: add -listName -taskText");
+    System.out.println("Edit task text: edit -listName -taskNumber -newTaskText");
+    System.out.println("Edit task status: set status -listName -taskNumber -newStatus[done, cancelled]");
+    System.out.println("Edit list name: edit list name -listName -newNameOfList");
+    System.out.println("-----------------------------------------------------------");
     return true;
   }
 }

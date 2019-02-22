@@ -1,5 +1,6 @@
 package com.todoList;
 
+import com.todoList.Entities.CommandList;
 import com.todoList.TodoListController.TodoListController;
 
 import java.io.IOException;
@@ -13,9 +14,8 @@ public class Main {
     Scanner inputStream = new Scanner(System.in);
     String commandString;
 
-    while (!(commandString = inputStream.nextLine()).equals("exit")){
+    while (!(commandString = inputStream.nextLine()).equals(CommandList.EXIT)){
       todoListController.processUserCommand(commandString);
     }
-    todoListController.saveResult();
   }
 }

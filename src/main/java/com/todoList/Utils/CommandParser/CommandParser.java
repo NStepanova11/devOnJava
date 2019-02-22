@@ -26,7 +26,7 @@ public class CommandParser {
     return userCommand;
   }
 
-  public void checkParamsCorrectness(List<String> commandParts, CorrectParams correctParams){
+  public boolean checkParamsCorrectness(List<String> commandParts, CorrectParams correctParams){
     String command = commandParts.get(0);
     int statusIndex = 3;
     int taskNumberIndex = 2;
@@ -48,6 +48,7 @@ public class CommandParser {
     if (command.equals(CommandList.SET_STATUS) && !correctParams.getStatusList().contains(commandParts.get(statusIndex))){
       throw new IllegalArgumentException(Messages.wrongStatusFromUser);
     }
+    return true;
   }
 
   public void removeElementFromUserString(){

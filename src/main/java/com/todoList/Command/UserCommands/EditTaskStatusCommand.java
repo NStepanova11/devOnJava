@@ -20,6 +20,7 @@ public class EditTaskStatusCommand extends Command {
         listExist=true;
         if(list.getTaskList().size()>=(taskNumber - 1) && (taskNumber-1)>=0) {
           list.getTaskList().get(taskNumber - 1).setStatus(taskStatus);
+          ConsoleWriter.printMessage(Messages.taskStatusUpdated);
         }
         else{
           ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber);

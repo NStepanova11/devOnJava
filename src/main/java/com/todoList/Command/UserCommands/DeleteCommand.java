@@ -18,7 +18,7 @@ public class DeleteCommand extends Command {
         listExist = true;
         listOfTaskLists.remove(list);
         ConsoleWriter.printMessage(Messages.listIsDeleted);
-        return true;
+        break;
       }
     }
 
