@@ -25,7 +25,7 @@ public class TodoListController {
     return listOfTaskLists;
   }
 
-  public void  processUserCommand(String userCommandString) throws IOException {
+  public boolean  processUserCommand(String userCommandString) throws IOException {
     try {
       CommandParser commandParser = new CommandParser();
       Command command = commandParser.parseUserCommand(userCommandString, correctParams);
@@ -34,7 +34,9 @@ public class TodoListController {
     }
     catch (Exception ex){
       System.out.println(ex.getMessage());
+      return false;
     }
+    return true;
   }
 
   public void loadAllTodoLists() throws IOException {
@@ -45,7 +47,6 @@ public class TodoListController {
   public boolean saveResult() throws IOException {
     try{
       FileController.saveToFile(listOfTaskLists);
-      //ConsoleWriter.printMessage(Messages.resultSaved);
     }
     catch (IOException ex){
       ConsoleWriter.printMessage(Messages.fileWritingError);

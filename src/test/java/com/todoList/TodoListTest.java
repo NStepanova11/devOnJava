@@ -1,12 +1,15 @@
 package com.todoList;
 
 import com.todoList.Command.Command;
+import com.todoList.Entities.Task;
 import com.todoList.Entities.TaskList;
+import com.todoList.TodoListController.TodoListController;
 import com.todoList.Utils.CommandParser.CommandParser;
 import com.todoList.Utils.CorrectParams;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +25,6 @@ public class TodoListTest {
   public void parseCommandCreateList(){
     runCommand("create -firsList");
     runCommand("CREATE -secondList");
-    //runCommand("create thirdList");
   }
 
   @Test (expected = IllegalArgumentException.class)
@@ -116,4 +118,22 @@ public class TodoListTest {
     Command command = commandParser.parseUserCommand(commandString, correctParams);
     Assert.assertFalse(command.perform(listOfTaskLists));
   }
+
+  @Test
+  public void saveResultTest() throws IOException {
+    TodoListController todoListController = new TodoListController();
+    Assert.assertTrue(todoListController.processUserCommand("create -listName"));
+  }
+
+  @Test
+  public void loadListTest() throws IOException {
+    TodoListController todoListController = new TodoListController();
+    todoListController.processUserCommand("create -first");
+    todoListController.processUserCommand("create -second");
+    todoListController.loadAllTodoLists();
+    Assert.assertEquals(todoListController.getListOfTaskLists().size(), 2);
+    Assert.assertEquals(todoListController.getListOfTaskLists().get(0).getListName(), "first");
+    Assert.assertEquals(todoListController.getListOfTaskLists().get(1).getTaskList().size(), 0);
+  }
+
 }
