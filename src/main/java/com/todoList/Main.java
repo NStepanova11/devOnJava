@@ -10,7 +10,6 @@ public class Main {
     TodoListController todoListController = new TodoListController();
     todoListController.userManual();
     todoListController.loadAllTodoLists();
-
     Scanner inputStream = new Scanner(System.in);
     String commandString;
 

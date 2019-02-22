@@ -1,22 +1,22 @@
 package com.todoList.Utils;
 
 public class Messages {
-  public static final String wrongParamsQuantityMessage = "-- Неверное количество параметов";
-  public static final String wrongCommandFromUser = "-- Неверно задана команда";
-  public static final String wrongStatusFromUser = "-- Неверно задан статус";
-  public static final String wrongListName = "-- Неверно задано название todo-листа";
-  public static final String wrongTaskNumberFormat = "-- Номер задачи должен быть целым числом";
+  public static final String wrongParamsQuantityMessage = "-- Incorrect number of parameters";
+  public static final String wrongCommandFromUser = "-- Invalid command";
+  public static final String wrongStatusFromUser = "-- Invalid status, use \"-done\" or \"-cancelled\"";
+  public static final String wrongListName = "-- Incorrect todo list name";
+  public static final String wrongTaskNumberFormat = "-- Task number must be an integer";
 
-  public static final String fileReadingError = "-- Ошибка чтения файла";
-  public static final String fileWritingError = "-- Ошибка записи в файл";
+  public static final String fileReadingError = "-- Error reading file";
+  public static final String fileWritingError = "-- Error writing to file";
 
-  public static final String emptyListOfLists = " Нет todo-листов";
-  public static final String allTodoLists = " Список Todo-листов:";
-  public static final String todoListIsEmpty = " Todo-лист пуст";
-  public static final String taskIsAppend = " Задача добавлена";
-  public static final String listIsDeleted = " Todo-лист удален";
-  public static final String listIsCreated = " Todo-лист создан";
-  public static final String listIsExist = "-лист уже существует";
-  public static final String incorrectTaskNumber = "Нет задачи с номером ";
-  public static final String resultSaved = " Результат сохранен";
+  public static final String emptyListOfLists = " You don't have todo lists";
+  public static final String allTodoLists = " Your Todo-lists:";
+  public static final String todoListIsEmpty = " Todo-list is empty";
+  public static final String taskIsAppend = " Task added";
+  public static final String listIsDeleted = " Todo-list deleted";
+  public static final String listIsCreated = " Todo-list created";
+  public static final String listIsExist = " sheet already exists";
+  public static final String incorrectTaskNumber = "No task with number ";
+  public static final String resultSaved = " Result saved";
 }

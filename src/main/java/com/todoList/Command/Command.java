@@ -11,11 +11,14 @@ abstract public class Command {
 
   public Command(){
     commandParts = new ArrayList<>();
-    //commandParser = new CommandParser();
   }
 
   public void setCommandParamsList(List<String> commandPartsFromUser){
     this.commandParts = commandPartsFromUser;
+  }
+
+  public String getCommandType(){
+    return commandType;
   }
 
   public void setCommandType(String commandType){
@@ -25,32 +28,3 @@ abstract public class Command {
     return true;
   }
 }
-
-
-/*
- protected String listName;
-  protected String task;
-  protected int taskNumber;
-  protected String status;
-
-  public void setListName(String listName){
-    this.listName = listName;
-  }
-
-  public void setTask(String task){
-    this.task = task;
-  }
-
-  public void setTaskNumber(int taskNumber){
-    this.taskNumber = taskNumber;
-  }
-
-  public void setStatus (String status){
-    this.status = status;
-  }
-
-  public boolean perform(List<TaskList> listOfTaskLists){
-    return true;
-  }
-
-* */

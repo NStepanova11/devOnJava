@@ -12,6 +12,7 @@ public class ShowAllCommand extends Command {
   public boolean perform(List<TaskList> listOfTaskLists){
     if (listOfTaskLists.isEmpty()) {
       System.out.println(Messages.emptyListOfLists);
+      return false;
     }
 
     ConsoleWriter.printMessage(Messages.allTodoLists);
