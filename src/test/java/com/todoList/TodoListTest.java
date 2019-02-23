@@ -33,7 +33,7 @@ public class TodoListTest {
 
   @Test (expected = IllegalArgumentException.class)
   public void testDeleteListCommand(){
-    runCommand("create -deteteTestList");
+    runCommand("create -deleteTestList");
     runCommand("delete -DELETEtestLIST");
     runBadCommand("delete -deleteTestList");
     runBadCommand("delete");
@@ -74,13 +74,13 @@ public class TodoListTest {
   public void testEditListNameCommand(){
     String list = "-listName";
     runCommand("create "+list);
-    runCommand("edit list name "+list+" -newListName");
-    runBadCommand("edit list name -wrongName -newName");
+    runCommand("rename "+list+" -newListName");
+    runBadCommand("rename -wrongName -newName");
   }
 
   @Test
   public void testShowAllCommand(){
-    runBadCommand("show all");
+    //runCommand("show all");
     runCommand("create -showList1");
     runCommand("create -showList2");
     runCommand("show all");

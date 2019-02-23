@@ -38,7 +38,7 @@ public class CommandParser {
       throw new IllegalArgumentException(Messages.wrongParamsQuantityMessage);
     }
     try {
-      if ((command.equals(CommandList.EDIT_TASK) || command.equals(CommandList.SET_STATUS))){
+      if ((command.equals(CommandList.EDIT_TASK) || command.equals(CommandList.SET_STATUS) || command.equals(CommandList.DELETE_TASK))){
         Integer.parseInt(commandParts.get(taskNumberIndex));
       }
     }

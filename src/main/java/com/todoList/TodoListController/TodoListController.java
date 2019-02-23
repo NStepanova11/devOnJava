@@ -68,12 +68,14 @@ public class TodoListController {
     System.out.printf(commandManualFormat, "show -listName");
     System.out.printf(commandHeaderFormat,"Append task to todo-list: ");
     System.out.printf(commandManualFormat, "add -listName -taskText");
+    System.out.printf(commandHeaderFormat,"Delete task from todo-list: ");
+    System.out.printf(commandManualFormat, "delete task -listName -taskNumber");
     System.out.printf(commandHeaderFormat,"Edit task text: ");
     System.out.printf(commandManualFormat, "edit -listName -taskNumber -newTaskText");
     System.out.printf(commandHeaderFormat,"Edit task status: ");
     System.out.printf(commandManualFormat, "set status -listName -taskNumber -newStatus[done or cancelled]");
-    System.out.printf(commandHeaderFormat,"Edit list name: ");
-    System.out.printf(commandManualFormat, "edit list name -listName -newNameOfList");
+    System.out.printf(commandHeaderFormat,"Rename list: ");
+    System.out.printf(commandManualFormat, "rename -listName -newNameOfList");
     System.out.println("-----------------------------------------------------------");
     return true;
   }

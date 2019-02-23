@@ -15,7 +15,7 @@ public class CommandList {
   public static final String EDIT_TASK = "edit";
   public static final String SET_STATUS = "set status";
   public static final String EXIT = "exit";
-  public static final String EDIT_LIST_NAME = "edit list name";
+  public static final String EDIT_LIST_NAME = "rename";
   public static final String DELETE_TASK = "delete task";
 
   public static final int SHOW_ALL_PARAM_QUANTITY = 1;

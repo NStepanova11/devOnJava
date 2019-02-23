@@ -20,9 +20,9 @@ public class ShowListCommand extends Command {
           int i = 1;
           for (Task task : list.getTaskList()) {
             //System.out.println(i+". "+task.getStatus()+ " : " +task.getTaskText());
-            System.out.printf("%-3d", i);
-            System.out.printf("%-12s", task.getStatus()+": ");
-            System.out.printf("%-255s%n", task.getTaskText());
+            System.out.printf("%-2d", i);
+            System.out.printf("%-10s", task.getStatus()+": ");
+            System.out.println(task.getTaskText());
             i++;
           }
         } else {
