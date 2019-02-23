@@ -17,7 +17,7 @@ public class AddCommand extends Command {
     boolean listExist = false;
 
     for (TaskList taskList : listOfTaskLists){
-      if(taskList.getListName().equals(listName)){
+      if(taskList.getListName().toLowerCase().equals(listName.toLowerCase())){
         listExist = true;
         taskList.getTaskList().add(task);
         ConsoleWriter.printMessage(Messages.taskIsAppend);

@@ -16,9 +16,9 @@ public class EditTaskStatusCommand extends Command {
     boolean listExist = false;
 
     for (TaskList list: listOfTaskLists){
-      if (list.getListName().equals(listName)){
+      if (list.getListName().toLowerCase().equals(listName.toLowerCase())){
         listExist=true;
-        if(list.getTaskList().size()>=(taskNumber - 1) && (taskNumber-1)>=0) {
+        if(list.getTaskList().size()>=(taskNumber) && (taskNumber-1)>=0) {
           list.getTaskList().get(taskNumber - 1).setStatus(taskStatus);
           ConsoleWriter.printMessage(Messages.taskStatusUpdated);
         }

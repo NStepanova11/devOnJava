@@ -7,19 +7,18 @@ import com.todoList.Utils.Messages;
 
 import java.util.List;
 
-public class EditTaskCommand extends Command{
+public class DeleteTaskCommand extends Command {
   public boolean perform(List<TaskList> listOfTaskLists) throws NumberFormatException{
     String listName = commandParts.get(0);
     int taskNumber = Integer.parseInt(commandParts.get(1));
-    String taskText = commandParts.get(2);
     boolean listExist = false;
 
     for (TaskList list: listOfTaskLists) {
       if (list.getListName().toLowerCase().equals(listName.toLowerCase())) {
         listExist = true;
         if (list.getTaskList().size() >= (taskNumber) && (taskNumber - 1) >= 0) {
-          list.getTaskList().get(taskNumber - 1).setTaskText(taskText);
-          ConsoleWriter.printMessage(Messages.taskUpdated);
+          list.getTaskList().remove(taskNumber-1);
+          ConsoleWriter.printMessage(Messages.taskDeleted);
         } else {
           ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber);
           return false;

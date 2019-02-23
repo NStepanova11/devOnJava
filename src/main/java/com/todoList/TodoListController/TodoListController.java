@@ -15,6 +15,8 @@ import java.util.List;
 public class TodoListController {
   private List<TaskList> listOfTaskLists;
   private CorrectParams correctParams;
+  public static final String commandManualFormat = "%-90s%n";
+  public static final String commandHeaderFormat = "%-27s";
 
   public TodoListController(){
     listOfTaskLists = new ArrayList<>();
@@ -56,14 +58,22 @@ public class TodoListController {
   }
 
   public boolean userManual(){
-    System.out.println("Create todo-list: create -listName");
-    System.out.println("Delete todo-list: delete -listName");
-    System.out.println("Show list of all sheets: show all");
-    System.out.println("Show todo-list: show -listName");
-    System.out.println("Append task to todo-list: add -listName -taskText");
-    System.out.println("Edit task text: edit -listName -taskNumber -newTaskText");
-    System.out.println("Edit task status: set status -listName -taskNumber -newStatus[done, cancelled]");
-    System.out.println("Edit list name: edit list name -listName -newNameOfList");
+    System.out.printf(commandHeaderFormat,"Create todo-list:");
+    System.out.printf(commandManualFormat, "create -listName");
+    System.out.printf(commandHeaderFormat,"Delete todo-list:");
+    System.out.printf(commandManualFormat, "delete -listName");
+    System.out.printf(commandHeaderFormat,"Show list of all sheets:");
+    System.out.printf(commandManualFormat, "show all");
+    System.out.printf(commandHeaderFormat,"Show todo-list: ");
+    System.out.printf(commandManualFormat, "show -listName");
+    System.out.printf(commandHeaderFormat,"Append task to todo-list: ");
+    System.out.printf(commandManualFormat, "add -listName -taskText");
+    System.out.printf(commandHeaderFormat,"Edit task text: ");
+    System.out.printf(commandManualFormat, "edit -listName -taskNumber -newTaskText");
+    System.out.printf(commandHeaderFormat,"Edit task status: ");
+    System.out.printf(commandManualFormat, "set status -listName -taskNumber -newStatus[done or cancelled]");
+    System.out.printf(commandHeaderFormat,"Edit list name: ");
+    System.out.printf(commandManualFormat, "edit list name -listName -newNameOfList");
     System.out.println("-----------------------------------------------------------");
     return true;
   }

@@ -14,7 +14,7 @@ public class CreateCommand extends Command {
     boolean listExist = false;
 
     for (TaskList list : listOfTaskLists){
-      if (list.getListName().equals(listName)) {
+      if (list.getListName().toLowerCase().equals(listName.toLowerCase())) {
         listExist = true;
         break;
       }

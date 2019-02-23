@@ -10,11 +10,11 @@ import java.util.List;
 public class DeleteCommand extends Command {
 
   public boolean perform(List<TaskList> listOfTaskLists){
-    String listName = commandParts.get(0);
+    String listName = commandParts.get(0).toLowerCase();
     boolean listExist = false;
 
     for (TaskList list: listOfTaskLists){
-      if (list.getListName().equals(listName)){
+      if (list.getListName().toLowerCase().equals(listName)){
         listExist = true;
         listOfTaskLists.remove(list);
         ConsoleWriter.printMessage(Messages.listIsDeleted);

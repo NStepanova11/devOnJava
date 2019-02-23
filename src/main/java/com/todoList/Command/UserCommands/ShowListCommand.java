@@ -14,12 +14,15 @@ public class ShowListCommand extends Command {
     boolean listExist = false;
 
     for (TaskList list: listOfTaskLists) {
-      if (list.getListName().equals(listName)) {
+      if (list.getListName().toLowerCase().equals(listName.toLowerCase())) {
         listExist = true;
         if (list.getTaskList().size() != 0) {
           int i = 1;
           for (Task task : list.getTaskList()) {
-            System.out.println(i+". "+task.getTaskText() + " : " + task.getStatus());
+            //System.out.println(i+". "+task.getStatus()+ " : " +task.getTaskText());
+            System.out.printf("%-3d", i);
+            System.out.printf("%-12s", task.getStatus()+": ");
+            System.out.printf("%-255s%n", task.getTaskText());
             i++;
           }
         } else {

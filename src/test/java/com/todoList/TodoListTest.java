@@ -17,6 +17,54 @@ public class TodoListTest {
   private static List<TaskList> listOfTaskLists = new ArrayList<>();
 
   @Test (expected = IllegalArgumentException.class)
+  public void testCreateListCommand(){
+    runCommand("create -createTestList");
+    runBadCommand("create -createTestList");
+    runBadCommand("create");
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testAddTaskCommand(){
+    runCommand("create -addTestList");
+    runCommand("ADD -addTestList -first task");
+    runBadCommand("add");
+    runBadCommand("add -secondList -task");
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testDeleteListCommand(){
+    runCommand("create -deteteTestList");
+    runCommand("delete -DELETEtestLIST");
+    runBadCommand("delete -deleteTestList");
+    runBadCommand("delete");
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testDeleteTaskCommand(){
+    String list = "-deleteTaskTestList";
+    runCommand("create "+list);
+    runCommand("add "+list+" -task 1");
+    runBadCommand("delete task "+list+" -100");
+    runBadCommand("delete task");
+    runCommand("delete task -wrongName -1");
+  }
+
+  
+  private void runCommand(String commandString){
+    CorrectParams correctParams = new CorrectParams();
+    CommandParser commandParser = new CommandParser();
+    Command command = commandParser.parseUserCommand(commandString, correctParams);
+    Assert.assertTrue(command.perform(listOfTaskLists));
+  }
+
+  private void runBadCommand(String commandString){
+    CorrectParams correctParams = new CorrectParams();
+    CommandParser commandParser = new CommandParser();
+    Command command = commandParser.parseUserCommand(commandString, correctParams);
+    Assert.assertFalse(command.perform(listOfTaskLists));
+  }
+/*
+  @Test (expected = IllegalArgumentException.class)
   public void parseBadCommand(){
     runCommand("sdadfsd");
   }
@@ -29,12 +77,13 @@ public class TodoListTest {
 
   @Test (expected = IllegalArgumentException.class)
   public void parseBadCommandCreateList(){
-    runBadCommand("create -firsList");
+    runCommand("create -firsList");
     runBadCommand("create thirdList");
   }
 
   @Test
   public void parseCommandShowall(){
+    runCommand("create -thirdList");
     runCommand("show all");
   }
 
@@ -120,19 +169,23 @@ public class TodoListTest {
     runCommand("delete -listName");
   }
 
-  private void runCommand(String commandString){
-    CorrectParams correctParams = new CorrectParams();
-    CommandParser commandParser = new CommandParser();
-    Command command = commandParser.parseUserCommand(commandString, correctParams);
-    Assert.assertTrue(command.perform(listOfTaskLists));
+
+  @Test
+  public void deleteTaskCommandTest(){
+    runCommand("create -listName");
+    runCommand("add -LISTNAME -task");
+    runCommand("delete task -listName -1");
   }
 
-  private void runBadCommand(String commandString){
-    CorrectParams correctParams = new CorrectParams();
-    CommandParser commandParser = new CommandParser();
-    Command command = commandParser.parseUserCommand(commandString, correctParams);
-    Assert.assertFalse(command.perform(listOfTaskLists));
+  @Test
+  public void badDeleteTaskCommandTest1(){
+    runCommand("create -listName");
+    runCommand("add -LISTNAME -task");
+    runCommand("delete task -listName -1");
+    runBadCommand("delete task -listName -1");
   }
+
+
 
   @Test
   public void saveResultTest() throws IOException {
@@ -164,4 +217,5 @@ public class TodoListTest {
     Assert.assertEquals(todoListController.getListOfTaskLists().get(0).getListName(), "first");
     Assert.assertEquals(todoListController.getListOfTaskLists().get(1).getTaskList().size(), 0);
   }
+  */
 }

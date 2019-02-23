@@ -16,6 +16,7 @@ public class CommandList {
   public static final String SET_STATUS = "set status";
   public static final String EXIT = "exit";
   public static final String EDIT_LIST_NAME = "edit list name";
+  public static final String DELETE_TASK = "delete task";
 
   public static final int SHOW_ALL_PARAM_QUANTITY = 1;
   public static final int CREATE_PARAM_QUANTITY = 2;
@@ -25,6 +26,7 @@ public class CommandList {
   public static final int EDIT_TASK_PARAM_QUANTITY = 4;
   public static final int SET_STATUS_PARAM_QUANTITY = 4;
   public static final int EDIT_LIST_NAME_PARAM_QUANTITY = 3;
+  public static final int DELETE_TASK_PARAM_QUANTITY = 3;
 
   public static Map<String, Command> defineCommandList(){
     Map<String, Command> commandTypes = new HashMap<>();
@@ -36,6 +38,7 @@ public class CommandList {
     commandTypes.put(EDIT_TASK, new EditTaskCommand());
     commandTypes.put(SET_STATUS, new EditTaskStatusCommand());
     commandTypes.put(EDIT_LIST_NAME, new EditTodoListNameCommand());
+    commandTypes.put(DELETE_TASK, new DeleteTaskCommand());
     return commandTypes;
   }
 
@@ -49,6 +52,7 @@ public class CommandList {
     commandParamsQuantity.put(EDIT_TASK, EDIT_TASK_PARAM_QUANTITY);
     commandParamsQuantity.put(SET_STATUS, SET_STATUS_PARAM_QUANTITY);
     commandParamsQuantity.put(EDIT_LIST_NAME, EDIT_LIST_NAME_PARAM_QUANTITY);
+    commandParamsQuantity.put(DELETE_TASK, DELETE_TASK_PARAM_QUANTITY);
     return commandParamsQuantity;
   }
 }

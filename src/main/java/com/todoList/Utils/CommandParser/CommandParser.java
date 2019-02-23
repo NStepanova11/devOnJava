@@ -15,9 +15,9 @@ public class CommandParser {
   private List<String> commandParts;
 
   public Command parseUserCommand(String commandString, CorrectParams correctParams){
-    commandParts = parseCommandParams(commandString.toLowerCase());
+    commandParts = parseCommandParams(commandString);
     checkParamsCorrectness(commandParts, correctParams);
-    String command = commandParts.get(0);
+    String command = commandParts.get(0).toLowerCase();
     removeElementFromUserString();
 
     Command userCommand = correctParams.getCommandTypes().get(command);
@@ -27,7 +27,7 @@ public class CommandParser {
   }
 
   public boolean checkParamsCorrectness(List<String> commandParts, CorrectParams correctParams){
-    String command = commandParts.get(0);
+    String command = commandParts.get(0).toLowerCase();
     int statusIndex = 3;
     int taskNumberIndex = 2;
 

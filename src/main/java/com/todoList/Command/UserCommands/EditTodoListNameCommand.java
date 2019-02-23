@@ -15,7 +15,7 @@ public class EditTodoListNameCommand extends Command {
     boolean listExist = false;
 
     for (TaskList taskList : listOfTaskLists) {
-      if (taskList.getListName().equals(listName)) {
+      if (taskList.getListName().toLowerCase().equals(listName.toLowerCase())) {
         listExist = true;
         taskList.setListName(newListName);
         ConsoleWriter.printMessage(Messages.listNameUpdated);

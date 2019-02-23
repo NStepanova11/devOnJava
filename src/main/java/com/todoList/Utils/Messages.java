@@ -22,4 +22,5 @@ public class Messages {
   public static final String taskUpdated = " Task updated";
   public static final String taskStatusUpdated = " Status updated";
   public static final String listNameUpdated = " List name updated";
+  public static final String taskDeleted =" Task deleted";
 }
