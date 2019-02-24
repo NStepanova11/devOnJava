@@ -1,0 +1,1 @@
+java -jar target/todo-list-1.0.jar
