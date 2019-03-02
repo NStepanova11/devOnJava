@@ -23,7 +23,7 @@ public class EditTaskStatusCommand extends Command {
           ConsoleWriter.printMessage(Messages.taskStatusUpdated);
         }
         else{
-          ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber);
+          ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber+"\n");
           return false;
         }
       }

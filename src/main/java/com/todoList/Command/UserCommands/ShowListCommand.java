@@ -25,6 +25,7 @@ public class ShowListCommand extends Command {
             System.out.println(task.getTaskText());
             i++;
           }
+          System.out.println();
         } else {
           System.out.println(Messages.todoListIsEmpty);
         }

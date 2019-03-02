@@ -19,7 +19,7 @@ public class ShowAllCommand extends Command {
     for (TaskList list: listOfTaskLists){
       System.out.println("- "+list.getListName());
     }
-
+    System.out.println();
     return true;
   }
 }

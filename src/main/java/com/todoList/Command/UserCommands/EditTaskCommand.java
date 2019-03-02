@@ -21,7 +21,7 @@ public class EditTaskCommand extends Command{
           list.getTaskList().get(taskNumber - 1).setTaskText(taskText);
           ConsoleWriter.printMessage(Messages.taskUpdated);
         } else {
-          ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber);
+          ConsoleWriter.printMessage(Messages.incorrectTaskNumber+taskNumber+"\n");
           return false;
         }
       }

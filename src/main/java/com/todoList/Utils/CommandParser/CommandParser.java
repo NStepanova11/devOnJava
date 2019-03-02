@@ -58,6 +58,9 @@ public class CommandParser {
   public List<String> parseCommandParams(String commandString){
     Pattern p = Pattern.compile(REGEX);
     List<String> result = new ArrayList<String>(Arrays.asList(p.split(commandString)));
+    for (int i=0; i<result.size(); i++){
+      result.set(i, result.get(i).trim());
+    }
     return result;
   }
 }
